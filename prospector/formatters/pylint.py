@@ -1,5 +1,8 @@
+from __future__ import unicode_literals
+
 import os
 import re
+
 from prospector.formatters.base import Formatter
 
 

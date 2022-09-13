@@ -4,6 +4,7 @@ from __future__ import absolute_import
 import os.path
 import sys
 from datetime import datetime
+from io import open
 
 from prospector import blender, postfilter, tools
 from prospector.config import configuration as cfg
@@ -133,7 +134,7 @@ class Prospector(object):
             if not output_files:
                 self.write_to(formatter, sys.stdout)
             for output_file in output_files:
-                with open(output_file, 'w+') as target:
+                with open(output_file, 'w+', encoding='UTF8') as target:
                     self.write_to(formatter, target)
 
     def write_to(self, formatter, target):
@@ -143,7 +144,7 @@ class Prospector(object):
             messages=not self.config.summary_only,
             profile=self.config.show_profile
         ))
-        target.write('\n')
+        target.write(u'\n')
 
 
 
